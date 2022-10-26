@@ -1,17 +1,11 @@
-
 module.exports = ({ env }) => ({
   connection: {
-    client: 'postgres',
+    client: 'mysql',
     connection: {
-      socketPath: env.DB_HOST,
-      database: env.DB_NAME,
-      user: env.DB_USER,
-      password: env.DB_PASS,
-      ssl: {
-        rejectUnauthorized: false
-      },
-    },
-    debug: false,
+      socketPath: env('INSTANCE_UNIX_SOCKET'),
+      database: env('DB_NAME'),
+      user: env('DB_USER'),
+      password: env('DB_PASS'),
+    }
   },
 });
-
